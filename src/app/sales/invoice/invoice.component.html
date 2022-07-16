@@ -1,0 +1,114 @@
+<div id="print">
+
+    <div class="container billhead">
+        <div class="left">
+            <img src="/assets/img/kaarlogo.jpg" alt="">
+            <h3>KAAR TECHNOLOGIES</h3>
+            <h6>25,Arcot Road ,Shyamala Tower</h6>
+            <h6>Chennai-600028</h6>
+        </div>
+
+    </div>
+
+    <div class="content container">
+        <h2 class="text-center text-danger">Invoice Memo </h2>
+
+        <div class="tab">
+            <table class="table table-bordered   table-hover table-responsive" id="salordtab">
+                <thead class="bg-primary text-blue-500 text-capitalize text-md-center border-dark ">
+                    <tr>
+                        <th>Item No</th>
+                        <th>Account Document No</th>
+                        <th>Payment Status</th>
+                        <th>Memo Type</th>
+                        <th>Payment Aging</th>
+                        <th>Payment Baseline Date</th>
+                        <th>Payment Last Date</th>
+                        <th>Net Price</th>
+                    </tr>
+                </thead>
+                <tbody class="bg-yellow-100 border-solid border-dark text-black-500 font-bold font-roboto
+                text-center">
+                    <tr *ngFor="let inv of InvoiceData; let i=index">
+                        <td>{{i+1}}</td>
+                        <td class="bg-purple-400">{{inv.ACCOUNTDOCNO}}</td>
+                        <td class="bg-danger" *ngIf="inv.CRDBINDICATOR == 'H'">Pending</td>
+                        <td class="bg-success" *ngIf="inv.CRDBINDICATOR == 'S'">PAID</td>
+                        <td class="text-danger bg-light" *ngIf="inv.CRDBINDICATOR == 'H'">CREDIT</td>
+                        <td class="text-green-500 bg-light" *ngIf="inv.CRDBINDICATOR == 'S'">DEBIT</td>
+                        <td>{{inv.AGING >= 0 ? inv.AGING+' more days to go':'Due Date Crossed'}}</td>
+                        <td>{{inv.BASELINEDATE}}</td>
+                        <td>{{inv.LASTDATE}}</td>
+                        <td class="bg-purple-100">{{SalesOrderData.NETPRICE + " "+ SalesOrderData.CURRENCY}}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+
+
+    </div>
+
+    <div class="details container">
+        <h3 class="text-center m-4 text-danger">Account Summary</h3>
+        <p class="text-center text-xl">Sales Order No : {{SalesOrderData["SALESDOCNO"]}}</p>
+
+        <div class="bill">
+
+
+            <div class="item">
+                <p class="text-2xl ">1. Total Ordered Quantity</p>
+                <p class="text-3xl  font-roboto"><span class="">{{InvoiceData.length+" "+"NOS"}}</span></p>
+            </div>
+
+            <div class="item">
+                <p class="text-2xl ">2. Net Price per Line Item</p>
+                <p class="text-3xl "><span class="">{{SalesOrderData["NETPRICE"]+" "+SalesOrderData["CURRENCY"]}}</span></p>
+            </div>
+
+            <div class="item">
+                <p class="text-2xl ">3. Net Value Total Amount to be Paid</p>
+                <p class="text-3xl "><span class="">{{SalesOrderData["NETVALUE"]+" "+SalesOrderData["CURRENCY"]}}</span></p>
+            </div>
+
+            <div class="item">
+                <p class="text-2xl ">4. Amount Paid</p>
+                <p class="text-3xl font-normal"><span class="text-green-500">{{PaidAmount+" "+SalesOrderData["CURRENCY"]}}</span></p>
+            </div>
+
+            <div class="item">
+                <p class="text-2xl ">5. Payment Due Amount</p>
+                <p class="text-3xl font-normal"><span class="text-danger">{{DueAmount+" "+SalesOrderData["CURRENCY"]}}</span></p>
+            </div>
+
+        </div>
+
+        <div class="res">
+            <h3 class="text-right font-normal text-danger font-roboto result">{{'Total Due Amount : '+" "+DueAmount+" "+SalesOrderData["CURRENCY"] }}</h3>
+        </div>
+
+
+    </div>
+
+
+
+    <div class="subscribe-us-area container">
+        <div class="container subscribe">
+            <div class="row">
+                <div class="col-lg-12 text-center subscribe-title">
+                    <h4 class="text-uppercase">Kaar Technologies . 25 yrs of excellence in SAP .</h4>
+                    <h5 class="para">Best CRM Pure Play SAP Providers .
+                    </h5>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+</div>
+
+<div class="download">
+    <button type="button" class="btn btn-dark" (click)="exportPDF()"> <i class="fa fa-download" style="font-size:30px;color:white"></i> Download Invoice</button>
+    <button type="button" class="btn btn-warning" (click)="backToSales()"> <i class="fa fa-arrow-circle-left " style="font-size:30px;color:white"></i> Back To Sales Order</button>
+
+</div>

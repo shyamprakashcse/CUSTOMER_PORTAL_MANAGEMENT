@@ -1,0 +1,57 @@
+<div class="quora-bar" *ngIf="!showDelivery">
+    <img src="/assets/img/kaarlogo.jpg" alt="qlogo">
+    <!-- <input type="search" name="query" id="search-box" placeholder="search your question here" class="form-control" ngModel #searchbar="ngModel" (click)="show($event)"> -->
+    <div class="search-outer">
+        <!-- <input id="search-input" type="search" placeholder="search your questions here" [(ngModel)]="userquery" class="form-control" /> -->
+        <input id="search-input" type="search" [(ngModel)]="searchInput.VBELN" placeholder="Search Inquiry No" class="form-control" />
+
+        <button type="submit" class="btn btn-primary">search</button>
+
+    </div>
+
+    <button type="button" class="btn btn-warning" (click)="backToHome()"> <i class="fa fa-arrow-circle-left " style="font-size:30px;color:white"></i> Back To Home </button>
+    <button type="button" class="btn btn-dark" (click)="ExportPDF()"> <i class="fa fa-download" style="font-size:20px;color:white"></i> Download Inquiry Data</button>
+
+</div>
+
+<div class="container-fluid " *ngIf="!showDelivery" id="print">
+
+    <h2 class="text-center pt-5">Sales Inquiry Data</h2>
+    <div class="tab">
+        <table class="table table-bordered table-striped  table-hover table-responsive" id="inqtab">
+            <thead class="bg-primary text-white text-capitalize text-md-center border-dark ">
+                <tr>
+                    <th class="hover:bg-primary-reverse" (click)="sortHeader('VBELN')">Inquiry No <i class="fa fa-sort" (click)="sortHeader('VBELN')"></i></th>
+                    <th class="hover:bg-primary-reverse" (click)="sortHeader('ERDAT')">Inquiry Created On <i class="fa fa-sort" (click)="sortHeader('ERDAT')"></i></th>
+                    <th class="hover:bg-primary-reverse" (click)="sortHeader('ERNAM')">Inquiry Created By <i class="fa fa-sort" (click)="sortHeader('ERNAM')"></i></th>
+                    <th class="hover:bg-primary-reverse" (click)="sortHeader('ANGDT')">Quotation Date <i class="fa fa-sort" (click)="sortHeader('ANGDT')"></i></th>
+                    <th class="hover:bg-primary-reverse" (click)="sortHeader('BNDDT')">Bid End Date <i class="fa fa-sort" (click)="sortHeader('BNDDT')"></i></th>
+                    <th class="hover:bg-primary-reverse" (click)="sortHeader('GUEBG')">Product Proposal Date <i class="fa fa-sort" (click)="sortHeader('GUEBG')"></i></th>
+                    <th class="hover:bg-primary-reverse" (click)="sortHeader('GUEEN')">Proposal End Date <i class="fa fa-sort" (click)="sortHeader('GUEEN')"></i></th>
+
+                </tr>
+            </thead>
+            <tbody class="bg-warning border-solid border-dark text-white">
+                <tr class="hover:bg-primary-reverse" *ngFor="let inquiry of InquiryData
+                | orderBy: orderField : reverseSort
+                | filterBy :searchInput
+                | paginate:{itemsPerPage:12,currentPage:page,totalItems:InquiryData.length} ; let i=index" (click)="setDeliveryData(inquiry)">
+                    <td class="bg-primary">{{inquiry.VBELN}}</td>
+                    <td class="bg-teal-300" [class.bg-danger]="inquiry.GUEEN=='0000-00-00' || inquiry.ANGDT == '0000-00-00' || inquiry.BNDDT == '0000-00-00' || inquiry.GUEBG == '0000-00-00' || inquiry.ERADT == '0000-00-00'">{{inquiry.ERDAT}}</td>
+                    <td class="bg-teal-300" [class.bg-danger]="inquiry.GUEEN=='0000-00-00' || inquiry.ANGDT == '0000-00-00' || inquiry.BNDDT == '0000-00-00' || inquiry.GUEBG == '0000-00-00' || inquiry.ERADT == '0000-00-00'">{{inquiry.ERNAM}}</td>
+                    <td [class.bg-danger]="inquiry.GUEEN=='0000-00-00' || inquiry.ANGDT == '0000-00-00' || inquiry.BNDDT == '0000-00-00' || inquiry.GUEBG == '0000-00-00' || inquiry.ERADT == '0000-00-00'" class="bg-teal-300 ">{{inquiry.ANGDT}}</td>
+                    <td [class.bg-danger]="inquiry.GUEEN=='0000-00-00' || inquiry.ANGDT == '0000-00-00' || inquiry.BNDDT == '0000-00-00' || inquiry.GUEBG == '0000-00-00' || inquiry.ERADT == '0000-00-00'" class="bg-teal-300">{{inquiry.BNDDT}}</td>
+                    <td [class.bg-danger]="inquiry.GUEEN=='0000-00-00' || inquiry.ANGDT == '0000-00-00' || inquiry.BNDDT == '0000-00-00' || inquiry.GUEBG == '0000-00-00' || inquiry.ERADT == '0000-00-00'" class="bg-teal-400">{{inquiry.GUEBG}}</td>
+                    <td class="bg-teal-300" [class.bg-danger]="inquiry.GUEEN=='0000-00-00' || inquiry.ANGDT == '0000-00-00' || inquiry.BNDDT == '0000-00-00' || inquiry.GUEBG == '0000-00-00' || inquiry.ERADT == '0000-00-00'">{{inquiry.GUEEN}}</td>
+                </tr>
+
+            </tbody>
+        </table>
+        <h3 class="pt-5 text-danger text-lg-center" *ngIf="(InquiryData | filterBy: searchInput).length === 0">No matching Documents found</h3>
+        <pagination-controls (pageChange)="page=$event" class="my-pagination"></pagination-controls>
+    </div>
+</div>
+
+
+
+<app-delivery [events]="DeliveryData" *ngIf="showDelivery"></app-delivery>

@@ -1,0 +1,133 @@
+<section class="timeline_area section_padding_130" *ngIf="displayStatus" id="print">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-sm-8 col-lg-6">
+                <!-- Section Heading-->
+                <div class="section_heading text-center">
+                    <h6>Kaar Technologies CRM Sales Order Tracker</h6>
+                    <h3>A brief details of Inquiry Quotation and Delivery Status</h3>
+                    <div class="line"></div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12">
+                <!-- Timeline Area-->
+                <div class="apland-timeline-area">
+                    <!-- Single Timeline Content-->
+                    <div class="single-timeline-area">
+                        <div class="timeline-date wow fadeInLeft" data-wow-delay="0.1s" style="visibility: visible; animation-delay: 0.1s; animation-name: fadeInLeft;">
+                            <p>Quotation</p>
+
+                        </div>
+                        <div class="row">
+                            <div class="col-12 col-md-6 col-lg-4">
+                                <div class="single-timeline-content d-flex wow fadeInLeft" data-wow-delay="0.3s" style="visibility: visible; animation-delay: 0.3s; animation-name: fadeInLeft;">
+                                    <div class="timeline-icon"><i class="fa fa-cart-arrow-down "></i></div>
+                                    <div class="timeline-text">
+                                        <h4>Inquiry Order No</h4>
+                                        <p>Inquiry No is {{events.VBELN}}</p>
+                                        <p>Inquiry Submitted On {{events.ERDAT}}</p>
+                                        <p>Inquiry Submitted By {{events.ERNAM}}</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-12 col-md-6 col-lg-4">
+                                <div class="single-timeline-content d-flex wow fadeInLeft" data-wow-delay="0.5s" style="visibility: visible; animation-delay: 0.5s; animation-name: fadeInLeft;">
+                                    <div class="timeline-icon"><i class="fa fa-calendar" aria-hidden="true"></i></div>
+                                    <div class="timeline-text">
+                                        <h4>Quotation Validity</h4>
+                                        <p>Quotation Submission valid till {{events.ANGDT}}</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-12 col-md-6 col-lg-4">
+                                <div class="single-timeline-content d-flex wow fadeInLeft" data-wow-delay="0.7s" style="visibility: visible; animation-delay: 0.7s; animation-name: fadeInLeft;">
+                                    <div class="timeline-icon"><i class="fa fa-calendar" aria-hidden="true"></i></div>
+                                    <div class="timeline-text">
+                                        <h4>Quotation BID Validity</h4>
+                                        <p>Last date of BID valid till {{events.BNDDT}}</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Single Timeline Content-->
+                    <div class="single-timeline-area">
+                        <div class="timeline-date wow fadeInLeft" data-wow-delay="0.1s" style="visibility: visible; animation-delay: 0.1s; animation-name: fadeInLeft;">
+                            <p>Product Proposals</p>
+                        </div>
+                        <div class="row">
+                            <div class="col-12 col-md-6 col-lg-4">
+                                <div class="single-timeline-content d-flex wow fadeInLeft" data-wow-delay="0.3s" style="visibility: visible; animation-delay: 0.3s; animation-name: fadeInLeft;">
+                                    <div class="timeline-icon"><i class="fa fa-calendar" aria-hidden="true"></i></div>
+                                    <div class="timeline-text">
+                                        <h4>Proposal Start Date</h4>
+                                        <p>Product Proposal Started on {{events.GUEBG}}</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-12 col-md-6 col-lg-4">
+                                <div class="single-timeline-content d-flex wow fadeInLeft" data-wow-delay="0.5s" style="visibility: visible; animation-delay: 0.5s; animation-name: fadeInLeft;">
+                                    <div class="timeline-icon"><i class="fa fa-calendar" aria-hidden="true"></i></div>
+                                    <div class="timeline-text">
+                                        <h4>Product Proposal End Date</h4>
+                                        <p>Proposal Ended on {{events.GUEEN}}</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Single Timeline Content-->
+                    <div class="single-timeline-area">
+                        <div class="timeline-date wow fadeInLeft" data-wow-delay="0.1s" style="visibility: visible; animation-delay: 0.1s; animation-name: fadeInLeft;">
+                            <p>Product Delivery Status</p>
+                        </div>
+                        <div class="row">
+                            <div class="col-12 col-md-6 col-lg-4">
+                                <div class="single-timeline-content d-flex wow fadeInLeft" data-wow-delay="0.3s" style="visibility: visible; animation-delay: 0.3s; animation-name: fadeInLeft;">
+                                    <div class="timeline-icon"><i class="fa fa-calendar" aria-hidden="true"></i></div>
+                                    <div class="timeline-text">
+                                        <h4>Delivery Processed On</h4>
+                                        <p>Quotation Processed On {{events.AUDAT}}</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-12 col-md-6 col-lg-4">
+                                <div class="single-timeline-content d-flex wow fadeInLeft" data-wow-delay="0.5s" style="visibility: visible; animation-delay: 0.5s; animation-name: fadeInLeft;">
+                                    <div class="timeline-icon"><i class="fa fa-check-circle-o" aria-hidden="true"></i></div>
+                                    <div class="timeline-text">
+                                        <h4>Delivery Status</h4>
+                                        <p [ngStyle]="deliveryStatus?{'color': 'green'} : {'color': 'red'}">{{deliveryText}}</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-12 col-md-6 col-lg-4" (click)="backToSales()">
+                                <div class="single-timeline-content d-flex wow fadeInLeft" data-wow-delay="0.5s" style="visibility: visible; animation-delay: 0.5s; animation-name: fadeInLeft;">
+                                    <div class="timeline-backicon"><i class="fa fa-arrow-circle-o-left" aria-hidden="true"></i></div>
+                                    <div class="timeline-text">
+                                        <h4>Back to Quotations</h4>
+                                        <p>Inquiry Orders</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<div class="container" *ngIf="!displayStatus">
+    <h4 class="text-center pt-3 text-danger">Quotation has been cancelled for this document . No further Details are Available.</h4>
+    <h2 class="text-center pt-3 text-secondary">Participants might have not submitted the document in the Bid or Quotation might have rejected in the bid project proposal.</h2>
+    <button type="submit" class="btn btn-dark btn-center" (click)="backToSales()">Back To Sales Inquiry</button>
+</div>
+
+<div class="download" *ngIf="displayStatus">
+    <button type="button" class="btn btn-dark" (click)="downloadDelivery()"> <i class="fa fa-download" style="font-size:30px;color:white"></i> Download Delivery Status</button>
+
+</div>

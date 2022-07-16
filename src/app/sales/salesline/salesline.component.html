@@ -1,0 +1,157 @@
+<section class="timeline_area section_padding_130" id="print">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-sm-8 col-lg-6">
+                <!-- Section Heading-->
+                <div class="section_heading text-center">
+                    <h6>Kaar Technologies CRM Sales Order Tracker</h6>
+                    <h3>A brief details of Inquiry Quotation and Delivery Status</h3>
+                    <div class="line"></div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12">
+                <!-- Timeline Area-->
+                <div class="apland-timeline-area">
+                    <!-- Single Timeline Content-->
+                    <div class="single-timeline-area">
+                        <div class="timeline-date wow fadeInLeft" data-wow-delay="0.1s" style="visibility: visible; animation-delay: 0.1s; animation-name: fadeInLeft;">
+                            <p>Sales Document</p>
+
+                        </div>
+                        <div class="row">
+                            <div class="col-12 col-md-6 col-lg-4">
+                                <div class="single-timeline-content d-flex wow fadeInLeft bg-yellow-100" data-wow-delay="0.3s" style="visibility: visible; animation-delay: 0.3s; animation-name: fadeInLeft;">
+                                    <div class="timeline-icon"><i class="fa fa-cart-arrow-down "></i></div>
+                                    <div class="timeline-text">
+                                        <h4>Sales Document Details</h4>
+                                        <p>Sales Document No is :</p> <span> {{events.SALESDOCNO}}</span>
+                                        <p>Item No :</p> <span>{{events.ITEMNO}}</span>
+                                        <p>Sales Document Date :</p> <span>{{events.DOCUMENTDATE}}</span>
+
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-12 col-md-6 col-lg-4">
+                                <div class="single-timeline-content d-flex wow fadeInLeft" data-wow-delay="0.5s" style="visibility: visible; animation-delay: 0.5s; animation-name: fadeInLeft;">
+                                    <div class="timeline-icon"><i class="fa fa-calendar" aria-hidden="true"></i></div>
+                                    <div class="timeline-text">
+                                        <h4>Material Details</h4>
+                                        <p>Material No : </p> <span>{{events.MATERIALNO}}</span>
+                                        <p>Material Name :</p> <span> {{events.MATERIALNAME}}</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-12 col-md-6 col-lg-4">
+                                <div class="bg-pink-100 single-timeline-content d-flex wow fadeInLeft" data-wow-delay="0.7s" style="visibility: visible; animation-delay: 0.7s; animation-name: fadeInLeft;">
+                                    <div class="timeline-icon"><i class="fa fa-calendar" aria-hidden="true"></i></div>
+                                    <div class="timeline-text">
+                                        <h4>Customer Details</h4>
+
+                                        <p>Customer No :</p> <span>{{events.SOLDPARTYNO}}</span>
+                                        <p>Customer Name :</p> <span>{{events.CUSTOMERNAME}}</span>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Single Timeline Content-->
+                    <div class="single-timeline-area">
+                        <div class="timeline-date wow fadeInLeft" data-wow-delay="0.1s" style="visibility: visible; animation-delay: 0.1s; animation-name: fadeInLeft;">
+                            <p>Sales Distribution Channel</p>
+                        </div>
+                        <div class="row">
+                            <div class="col-12 col-md-6 col-lg-4">
+                                <div class="bg-cyan-300 single-timeline-content d-flex wow fadeInLeft" data-wow-delay="0.3s" style="visibility: visible; animation-delay: 0.3s; animation-name: fadeInLeft;">
+                                    <div class="timeline-icon"><i class="fa fa-calendar" aria-hidden="true"></i></div>
+                                    <div class="timeline-text">
+                                        <h4>Delivery Distribution Channel</h4>
+                                        <p>Distribution Channel :</p> <span>{{events.DISTRIBUTEDCHANNEL}}</span>
+                                        <p>Shipping Point :</p> <span>{{events.SHIPPOINT}}</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-12 col-md-6 col-lg-4">
+                                <div class="single-timeline-content d-flex wow fadeInLeft" data-wow-delay="0.5s" style="visibility: visible; animation-delay: 0.5s; animation-name: fadeInLeft;">
+                                    <div class="timeline-icon"><i class="fa fa-calendar" aria-hidden="true"></i></div>
+                                    <div class="timeline-text">
+                                        <h4>Delivery Status</h4>
+
+                                        <p>Delivered On :</p> <span>{{events.GOODSISSUEDATE}}</span>
+                                        <p>Requested Delivery Date :</p> <span>{{events.REQUESTEDDELIVERYDATE}}</span>
+
+
+
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-12 col-md-6 col-lg-4">
+                                <div class="single-timeline-content d-flex wow fadeInLeft" data-wow-delay="0.5s" style="visibility: visible; animation-delay: 0.5s; animation-name: fadeInLeft;">
+                                    <div class="timeline-icon"><i class="fa fa-calendar" aria-hidden="true"></i></div>
+                                    <div class="timeline-text">
+                                        <h4>Purchase Order Details</h4>
+
+                                        <p>Purchase Order No :</p> <span>{{events.PURCHASEORDERNO}}</span>
+                                        <p>Ordered Quantity :</p> <span>{{events.REQUIREDQUANTITY}}</span>
+                                        <p>Order Status :</p> <span>{{events.STATUS}}</span>
+
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Single Timeline Content-->
+                    <div class="single-timeline-area">
+                        <div class="timeline-date wow fadeInLeft" data-wow-delay="0.1s" style="visibility: visible; animation-delay: 0.1s; animation-name: fadeInLeft;">
+                            <p>Cost Details</p>
+                        </div>
+                        <div class="row">
+                            <div class="col-12 col-md-6 col-lg-4">
+                                <div class="bg-purple-300  single-timeline-content d-flex wow fadeInLeft" data-wow-delay="0.3s" style="visibility: visible; animation-delay: 0.3s; animation-name: fadeInLeft;">
+                                    <div class="timeline-icon"><i class="fa fa-calendar" aria-hidden="true"></i></div>
+                                    <div class="timeline-text">
+                                        <h4>Cost Details</h4>
+                                        <p>Exchange Rate :</p> <span>{{events.EXCHANGERATE}}</span>
+                                        <p>Net Price :</p> <span>{{events.NETPRICE}}</span>
+                                        <p>Net Value :</p> <span>{{events.NETVALUE}}</span>
+                                        <p>Currency Value :</p> <span>{{events.CURRENCY}}</span>
+
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-12 col-md-6 col-lg-4" (click)="backToInvoice()">
+                                <div class="single-timeline-content d-flex wow fadeInLeft" data-wow-delay="0.5s" style="visibility: visible; animation-delay: 0.5s; animation-name: fadeInLeft;">
+                                    <div class="timeline-icon"><i class="fa fa-check-circle-o" aria-hidden="true"></i></div>
+                                    <div class="timeline-text">
+                                        <h4>Invoice Credit/Debit Memo</h4>
+                                        <p>click here to get Download Invoice</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-12 col-md-6 col-lg-4" (click)="backToSales()">
+                                <div class="bg-green-100 single-timeline-content d-flex wow fadeInLeft" data-wow-delay="0.5s" style="visibility: visible; animation-delay: 0.5s; animation-name: fadeInLeft;">
+                                    <div class="timeline-backicon"><i class="fa fa-arrow-circle-o-left" aria-hidden="true"></i></div>
+                                    <div class="timeline-text">
+                                        <h4>Back to Quotations</h4>
+                                        <p>Sales Orders</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<div class="download">
+    <button type="button" class="btn btn-dark" (click)="downloadSalesLine()"> <i class="fa fa-download" style="font-size:30px;color:white"></i> Download Sales Distribution Data</button>
+
+</div>

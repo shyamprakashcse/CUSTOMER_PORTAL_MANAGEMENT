@@ -1,0 +1,63 @@
+<div class="quora-bar" *ngIf="displayStatus">
+    <img src="/assets/img/kaarlogo.jpg" alt="qlogo">
+    <!-- <input type="search" name="query" id="search-box" placeholder="search your question here" class="form-control" ngModel #searchbar="ngModel" (click)="show($event)"> -->
+    <div class="search-outer">
+        <!-- <input id="search-input" type="search" placeholder="search your questions here" [(ngModel)]="userquery" class="form-control" /> -->
+        <input id="search-input" type="search" [(ngModel)]="searchInput.SALESDOCNO" placeholder="Search Sales Order No" class="form-control" />
+
+        <button type="submit" class="btn btn-primary">search</button>
+
+    </div>
+    <button type="button" class="btn btn-warning" (click)="backToInquiry()"> <i class="fa fa-arrow-circle-left " style="font-size:30px;color:white"></i> Back To Inquiry</button>
+    <button type="button" class="btn btn-dark" (click)="ExportPDF()"> <i class="fa fa-download" style="font-size:20px;color:white"></i> Download PDF</button>
+
+</div>
+
+<div class="container-fluid " *ngIf="displayStatus" id="print">
+
+    <h2 class="text-center pt-5">Sales Order Data</h2>
+    <div class="tab">
+        <table class="table table-bordered table-striped  table-hover table-responsive" id="salordtab">
+            <thead class="bg-primary text-white text-capitalize text-md-center border-dark ">
+                <tr>
+                    <th class="hover:bg-primary-reverse" (click)="sortHeader('SALESDOCNO')">Sales Order No <i class="fa fa-sort" (click)="sortHeader('SALESDOCNO')"></i></th>
+                    <th class="hover:bg-primary-reverse" (click)="sortHeader('MATERIALNO')">Material No <i class="fa fa-sort" (click)="sortHeader('MATERIALNO')"></i></th>
+                    <th class="hover:bg-primary-reverse" (click)="sortHeader('MATERIALNAME')">Material Name <i class="fa fa-sort" (click)="sortHeader('MATERIALNAME')"></i></th>
+                    <th class="hover:bg-primary-reverse" (click)="sortHeader('CUSTOMERNAME')">Customer Name <i class="fa fa-sort" (click)="sortHeader('CUSTOMERNAME')"></i></th>
+                    <th class="hover:bg-primary-reverse" (click)="sortHeader('NETPRICE')">Net Price <i class="fa fa-sort" (click)="sortHeader('NETPRICE')"></i></th>
+                    <th class="hover:bg-primary-reverse" (click)="sortHeader('NETVALUE')">Net Value <i class="fa fa-sort" (click)="sortHeader('NETVALUE')"></i></th>
+                    <th class="hover:bg-primary-reverse" (click)="sortHeader('QUANTITY')">Quantity <i class="fa fa-sort" (click)="sortHeader('QUANTITY')"></i></th>
+                    <th class="hover:bg-primary-reverse" (click)="sortHeader('GOODSISSUEDATE')">Goods Issue Date <i class="fa fa-sort" (click)="sortHeader('GOODSISSUEDATE')"></i></th>
+                    <th class="hover:bg-primary-reverse" (click)="sortHeader('DOCUMENTDATE')">Document Date <i class="fa fa-sort" (click)="sortHeader('DOCUMENTDATE')"></i></th>
+
+
+
+                </tr>
+            </thead>
+            <tbody class="bg-warning border-solid border-dark text-white">
+                <tr class="hover:bg-primary-reverse" *ngFor="let sales of salesOrderData
+
+              | orderBy: orderField : reverseSort
+              | filterBy :searchInput
+              | paginate:{itemsPerPage:10,currentPage:page,totalItems:salesOrderData.length} ; let i=index" (click)="setSaleLineData(sales)">
+                    <td class="bg-primary">{{sales.SALESDOCNO}}</td>
+                    <td class="hover:bg-primary-reverse bg-blue-100">{{sales.MATERIALNO}}</td>
+                    <td class="bg-yellow-200">{{sales.MATERIALNAME}}</td>
+                    <td class="bg-yellow-100">{{sales.CUSTOMERNAME}}</td>
+                    <td class="bg-purple-200">{{sales.NETPRICE}}</td>
+                    <td class="bg-purple-200">{{sales.NETVALUE}}</td>
+                    <td class="bg-yellow-200">{{sales.DELIVERYQUANTITY}}</td>
+                    <td class="bg-indigo-200">{{sales.GOODSISSUEDATE}}</td>
+                    <td class="bg-teal-300">{{sales.DOCUMENTDATE}}</td>
+
+                </tr>
+
+            </tbody>
+        </table>
+        <h3 class="pt-5 text-danger text-lg-center" *ngIf="(salesOrderData | filterBy: searchInput).length === 0">No matching Documents found</h3>
+        <pagination-controls (pageChange)="page=$event" class="my-pagination"></pagination-controls>
+    </div>
+</div>
+
+
+<app-salesline [events]="selectedSaleOrder" *ngIf="!displayStatus"></app-salesline>
